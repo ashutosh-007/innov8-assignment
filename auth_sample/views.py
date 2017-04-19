@@ -1,8 +1,6 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-import os
 from django.shortcuts import render, redirect
-from django.conf import settings
 from . import forms
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
