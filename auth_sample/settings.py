@@ -1,6 +1,7 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print BASE_DIR
 
 SECRET_KEY = '^4%u*78w+sfj9kqae8)8dlcci#lvg(k%k1u*=p7m)986j9vny_'
 
@@ -14,7 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -86,15 +88,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = (
-        (os.path.join(BASE_DIR, 'static'), )
-    )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+print STATICFILES_DIRS
 
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'my_login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
