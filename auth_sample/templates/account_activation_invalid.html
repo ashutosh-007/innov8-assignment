@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
 {% block content %}
-  <p>The confirmation link was invalid, possibly because it has already been used.</p>
+
+
+<div class="col-md-offset-2 col-md-8 panel-primary" style="margin-top:100px">
+    <div class="panel-heading text-center" style="font-size: 200%">Invalid Link or Expired</div>
+<div class="panel-body" style="border: 1px solid #3c85c4;">
+<p style="font-size: 20px">The confirmation link was invalid, possibly because it has already been used.</p>
+
+</div>
+</div>
+
+
 {% endblock %}
