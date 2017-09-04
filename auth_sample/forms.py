@@ -73,10 +73,11 @@ class SignUpForm(UserCreationForm):
 class ChangePasswordForm(PasswordChangeForm):
 
     def __init__(self, *args, **kwargs):
+
         super(ChangePasswordForm, self).__init__(*args, **kwargs)
-        self.fields['old_password'].help_text = ''
-        self.fields['new_password1'].help_text = ''
-        self.fields['new_password2'].help_text = ''
+        # self.fields['old_password'].help_text = ''
+        # self.fields['new_password1'].help_text = ''
+        # self.fields['new_password2'].help_text = ''
         self.fields['old_password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Old password'})
         self.fields['new_password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'New password'})
         self.fields['new_password2'].widget.attrs.update({'class': 'form-control', 'placeholder': 'New password confirmation'})
@@ -86,6 +87,8 @@ class ChangePasswordForm(PasswordChangeForm):
         Validates that the old_password field is correct.
         """
         old_password = self.cleaned_data["old_password"]
+        print(old_password)
+        print(self.user)
         if not self.user.check_password(old_password):
             raise forms.ValidationError(
 
@@ -93,16 +96,18 @@ class ChangePasswordForm(PasswordChangeForm):
             )
         return old_password
 
-    def clean_password2(self):
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError(
-               _("The two password fields didn't match.")
-            )
-        self.instance.username = self.cleaned_data.get('username')
-        password_validation.validate_password(self.cleaned_data.get('password2'), self.instance)
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        print(password1)
+        print(password2)
+        print(self.user)
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError(
+                    _("The two password fields didn't match.")
+                )
+        password_validation.validate_password(password2, self.user)
         return password2
-
 
 

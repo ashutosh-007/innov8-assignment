@@ -66,9 +66,7 @@ def change_password(request):
 
     form = forms.ChangePasswordForm(user=request.user)
     if request.method == 'POST':
-        form = forms.ChangePasswordForm(request.POST)
-        print(form.is_valid())
-        print(form.errors)
+        form = forms.ChangePasswordForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
             return render(request, 'password_updated.html')
