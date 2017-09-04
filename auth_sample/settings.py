@@ -1,13 +1,16 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print BASE_DIR
+
 
 SECRET_KEY = '^4%u*78w+sfj9kqae8)8dlcci#lvg(k%k1u*=p7m)986j9vny_'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+ADMINS = [('Ashutosh', 'ashutosh.bhumca2013@gmail.com'), ]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,7 +20,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'crispy_forms',
+    'widget_tweaks'
 ]
+
+AUTH_USER_MODEL = 'core.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,17 +55,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'auth_sample.wsgi.application'
 
 DATABASES = {
-    'default_1': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'auth_app',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': ''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'assignment.sqlite3'),
     }
 }
 
@@ -90,11 +88,16 @@ USE_TZ = True
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-print STATICFILES_DIRS
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ashutoshtiwari622@gmail.com'
+EMAIL_HOST_PASSWORD = 'ashutosh123'
+# SERVER_EMAIL = "ashutoshtiwari622@gmail.com"
 
 
 LOGIN_URL = 'my_login'

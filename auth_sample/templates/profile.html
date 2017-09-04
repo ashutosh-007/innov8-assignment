@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="container">
+    <div style="margin-top: 20px" class="row">
+        <div style="color; black; margin-bottom:10px; font-size:20px"class="col-md-4 col-md-offset-4">Firstname : </div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-control text-center">
+<span style="color: #009edf; font-size: 17px;" class="pull-left"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+
+                {{ request.user.first_name}}
+            </div>
+
+        </div>
+    </div>
+    <div style="margin-top: 20px" class="row">
+                <div style="color; black; margin-bottom:10px; font-size:20px"class="col-md-4 col-md-offset-4">Lastname : </div>
+
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-control text-center">
+<span style="color: #009edf; font-size: 17px;" class="pull-left"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+
+                {{ request.user.last_name}}
+            </div>
+
+        </div>
+    </div>
+
+    <div style="margin-top: 20px" class="row">
+                <div style="color; black; margin-bottom:10px; font-size:20px"class="col-md-4 col-md-offset-4">Username : </div>
+
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-control text-center">
+<span style="color: #009edf; font-size: 17px;" class="pull-left"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                {{ request.user.username}}
+            </div>
+
+        </div>
+    </div>
+    <div style="margin-top: 20px" class="row">
+                <div style="color; black; margin-bottom:10px; font-size:20px"class="col-md-4 col-md-offset-4">Email : </div>
+
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-control text-center">
+<span style="color: #009edf; font-size: 17px;" class="pull-left"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+
+                {{ request.user.email}}
+            </div>
+
+        </div>
+    </div>
+    <div style="margin-top: 20px" class="row">
+                <div style="color; black; margin-bottom:10px; font-size:20px"class="col-md-4 col-md-offset-4">Contact : </div>
+
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-control text-center">
+<span style="color: #009edf; font-size: 17px;" class="pull-left"><i class="fa fa-phone" aria-hidden="true"></i></span>
+
+                {{ request.user.contact_no}}
+            </div>
+
+        </div>
+    </div>
+
+     <div style="margin-top: 30px" class="row">
+
+        <div class="col-md-4 col-md-offset-4">
+            <div class="text-center">
+                <a href="{% url 'change_password' %}">Change Your Password</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

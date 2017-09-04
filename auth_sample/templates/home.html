@@ -2,8 +2,28 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <h2>Welcome, {{ user.username }}!</h2>
+<div class="row">
+  <div class="col-md-12 col-md-offset-4">
+<h1 style="color: black">Welcome, {{ user.username }}!</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-md-offset-4">
+<a href="{% url 'view_profile' user.id  %}">Visit Your Profile</a>
+  </div>
+</div>
+
+
 {% else %}
-<h1>Please Log into MySite</h1>
+
+<div class="container-fluid">
+  <h1 style="color: black">Welcome to Mysite</h1>
+  <p style="margin-top: 10px; font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec pellentesque augue, ut sagittis urna. Donec quam neque, euismod id enim pellentesque, gravida venenatis est. Nulla sit amet sollicitudin erat. Nunc vulputate nunc sed accumsan placerat. Aenean lacinia sapien at nunc efficitur luctus. Phasellus placerat sodales iaculis. Vestibulum consequat, sem in scelerisque blandit, massa lacus fringilla est, malesuada vulputate purus est vel sem. Nulla justo augue, fringilla at pulvinar a, aliquam faucibus quam. Nam vitae sapien sed odio aliquet congue ut id elit. Curabitur imperdiet ullamcorper eros eget ultrices. Curabitur efficitur, erat ac sollicitudin porttitor, erat velit ornare urna, sit amet dictum felis justo non augue. Duis lacinia viverra eros quis tincidunt. Morbi vulputate, erat sed posuere faucibus, dui diam elementum dolor, eleifend aliquet erat dui quis risus. Sed a velit libero. Nulla et ullamcorper quam, dapibus finibus lorem. Sed eget eros lectus.
+
+Sed sit amet dolor neque. Vestibulum sagittis, arcu ut luctus placerat, magna purus fermentum sem, in convallis orci felis at felis. Vivamus sit amet ipsum tincidunt, laoreet ex vel, bibendum turpis. Nullam malesuada at leo in blandit. Fusce venenatis convallis fermentum. Suspendisse tristique nibh et maximus gravida. Mauris mi risus, posuere ut sagittis ac, fringilla et nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+
+Duis fringilla quis risus a auctor. Fusce tincidunt risus varius cursus tincidunt. Aenean facilisis vestibulum urna, in ultrices ante tincidunt vel. Suspendisse sodales consequat lacus, a vulputate dolor. Phasellus eu faucibus tellus, et sollicitudin tortor. Mauris id felis facilisis, cursus est vitae, pretium urna. Sed et imperdiet ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque dictum egestas ex, a faucibus dolor ornare pretium. Nunc egestas lectus urna, mattis bibendum lorem hendrerit sit amet. Ut facilisis at eros sed semper. Integer eu mauris in sem condimentum vulputate nec a risus.</p>
+</div>
 {% endif %}
 {% endblock %}
